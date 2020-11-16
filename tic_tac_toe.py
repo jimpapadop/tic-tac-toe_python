@@ -12,7 +12,10 @@ def display_board():
     print("|" + board[3]+ "|"+ board[4]+ "|" + board[5]+ "|")
     print( "|" + board[6]+ "|"+ board[7]+ "|" + board[8]+ "|")
 
-def horx():
+#check win condition for player 1
+
+#check horizontal lines
+def horx():  
   i = 0
   while i<9:
     if iX[i]+iX[i+1]+iX[i+2] == 3:
@@ -20,8 +23,8 @@ def horx():
      sys.exit()
     i+=3
 
-
-def verx():
+#check vertical lines
+def verx():  
   v=0
   while v<3:
     if iX[v]+iX[v+3]+iX[v+6] == 3:
@@ -30,7 +33,8 @@ def verx():
    
     v+=1
 
-def diagx():
+#check the diagonals
+def diagx():  
    if iX[0]+iX[4]+iX[8] == 3:
      print("player1 won")
      sys.exit()
@@ -38,6 +42,9 @@ def diagx():
       print("player1 won")
       sys.exit()
 
+#check win condition for player 2
+
+#check horizontal lines
 def horo():
   i = 0
   while i<9:
@@ -46,7 +53,7 @@ def horo():
      sys.exit() 
     i+=3
 
-
+#check vertical lines
 def vero():
   v=0
   while v<3:
@@ -56,6 +63,8 @@ def vero():
    
     v+=1
 
+       
+#check the diagonals
 def diago():
    if iO[0]+iO[4]+iO[8] == 3:
      print("player2 won")
@@ -66,14 +75,14 @@ def diago():
 
 
 def player1():
-  position = input("Please p1 insert a position from 1-9:")
-  position = int(position) - 1
+  position = input("Please p1 insert a position from 1-9: ")
+  position = int(position) - 1  #shifts the variable position by one to the left
   if position in p :  
 
    board[position] = "X"
    
    display_board()
-   p.remove(position)
+   p.remove(position)  #erases the taken positions of the board
    iX[position] = 1 
    horx()  
    verx()
@@ -92,14 +101,14 @@ def player1():
   player2()
 
 def player2():
-  position = input("Please p2 insert a position from 1-9:")
-  position = int(position) - 1
+  position = input("Please p2 insert a position from 1-9: ")
+  position = int(position) - 1   #shifts the variable position by one to the left   
   if position in p :  
 
-   board[position] = "O"
+   board[position] = "O"  
 
    display_board()
-   p.remove(position)
+   p.remove(position)  #erases the taken positions of the board 
    iO[position]=1
    horo()
    vero()
@@ -107,7 +116,7 @@ def player2():
   else :
     print("this position is already taken")
     return player2()
-  #win_check()
+  
 
 
   player1()
